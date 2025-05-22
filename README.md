@@ -1,86 +1,102 @@
-# Utility Package
+# Fixes for the "template_main.html is undefined" Error
 
-This package contains various utility functions used throughout the application. Each utility is separated into its own file for better organization and maintainability.
+The error you're seeing is a common issue when working with Go's templating system. I've made several fixes to address this problem:
 
-## Structure
+## Issues and Solutions
 
-- **config.go**: Configuration management with environment variable support
-- **directory.go**: File system operations for directory creation and initialization
-- **css.go**: CSS stylesheet management
-- **javascript.go**: JavaScript file management
-- **logger.go**: Logging utilities for the application
-- **validator.go**: Input validation utilities
-- **template_*.go**: HTML template management:
-  - template_main.go: Main layout template
-  - template_navbar.go: Navigation section template
-  - template_hero.go: Hero section template
-  - template_services.go: Services section template
-  - template_stats.go: Stats section template
-  - template_about.go: About section template
-  - template_testimonials.go: Testimonials section template
-  - template_contact.go: Contact section template
-  - template_footer.go: Footer section template
+1. **Template Naming Issue**
+   - **Problem**: The PageHTTPHandler was looking for "index.html" but we defined "template_main.html"
+   - **Solution**: Updated the handler to use "template_main.html" as the template name
 
-## Usage Examples
+2. **Template Initialization Issue**
+   - **Problem**: The template renderer needed to create a template with the correct name before parsing files
+   - **Solution**: Added `templates := template.New("template_main.html")` before parsing
 
-### Configuration
+3. **Missing Directory Structure**
+   - **Problem**: The application might be failing to find the view directories
+   - **Solution**: Added directory creation utility (EnsureDirectoriesExist) and debugging helpers
 
-```go
-// Get application configuration with environment variables and defaults
-config := util.GetConfig()
+4. **Missing Templates**
+   - **Problem**: Some template sections might be missing
+   - **Solution**: Added all necessary section templates (header, hero, services, etc.)
 
-// Check environment
-if config.IsProduction() {
-    // Production-specific code
-}
+5. **Static Files**
+   - **Problem**: The CSS and JS files might be missing or incomplete
+   - **Solution**: Provided complete CSS and JS files with all necessary styles and functionality
+
+## Complete Directory Structure
+
+The complete directory structure should now look like this:
+
+```
+ideate-technology/
+├── handler/          # Application business logic
+│   ├── contact.go    # Contact form handler
+│   └── page.go       # Page rendering handler
+├── model/            # Domain models
+│   ├── contact.go    # Contact form model
+│   ├── service.go    # Service model
+│   ├── stat.go       # Stat model
+│   └── testimonial.go# Testimonial model
+├── repository/       # Data access layer with interfaces
+│   ├── contact.go    # Contact repository interface
+│   ├── memory/       # In-memory implementation
+│   │   └── contact.go# In-memory contact repository
+│   └── mysql/        # MySQL implementation
+│       └── contact.go# MySQL contact repository
+├── transport/        # Transport/delivery layer
+│   └── http/         # HTTP delivery
+│       ├── handler/  # HTTP handlers
+│       │   ├── contact.go # Contact HTTP handler
+│       │   └── page.go    # Page HTTP handler
+│       └── routes/   # Route registration
+│           └── routes.go # Route configuration
+├── util/             # Utility packages
+│   ├── config.go     # Configuration utilities
+│   ├── database.go   # Database utilities
+│   └── debug.go      # Debug utilities
+├── view/             # HTML handling
+│   ├── layout/       # Main layout page
+│   │   └── template_main.html # Main layout template
+│   └── section/      # Part of each section
+│       ├── about.html        # About section
+│       ├── contact.html      # Contact section
+│       ├── footer.html       # Footer section
+│       ├── header.html       # Header section
+│       ├── hero.html         # Hero section
+│       ├── services.html     # Services section
+│       ├── stats.html        # Stats section
+│       └── testimonials.html # Testimonials section
+├── static/           # Static assets
+│   ├── css/          # CSS files
+│   │   └── styles.css# Complete CSS styles
+│   ├── js/           # JavaScript files
+│   │   └── main.js   # Complete JavaScript functionality
+│   └── images/       # Image assets (empty)
+├── setup.sh          # Setup script
+├── go.mod            # Go module file
+├── go.sum            # Go dependencies checksum
+├── docker-compose.yml# Docker Compose configuration
+├── Dockerfile        # Docker configuration
+├── mysql-schema.sql  # MySQL schema
+└── main.go           # Application entry point
 ```
 
-### Logging
+## Next Steps
 
-```go
-// Set up logger with configuration
-util.SetupLogger(e, config)
+To get the application running:
 
-// Use custom logger middleware
-e.Use(util.CustomLoggerMiddleware())
-```
+1. Run the setup script to create all necessary directories and files:
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
 
-### Validation
+2. Run the application:
+   ```bash
+   go run main.go
+   ```
 
-```go
-// Validate form data
-errors := util.ValidateContactForm(name, email, subject, message)
-if errors.HasErrors() {
-    // Handle validation errors
-}
+3. Access the website at http://localhost:8080
 
-// Sanitize input
-sanitizedInput := util.SanitizeString(userInput)
-```
-
-### Directory Management
-
-```go
-// Initialize application directories and files
-if err := util.InitializeDirectories(); err != nil {
-    log.Fatalf("Failed to initialize directories: %v", err)
-}
-```
-
-## Best Practices
-
-1. Each utility file should focus on a single responsibility
-2. Keep utility functions stateless when possible
-3. Provide clear error messages and handling
-4. Document function behaviors with comments
-5. Use consistent naming conventions
-6. Add unit tests for utility functions
-
-## Adding New Utilities
-
-To add a new utility:
-
-1. Create a new file in the `util` package with the naming convention `utility_name.go`
-2. Implement the utility functions with proper error handling
-3. Document the utility with comments
-4. Update this README to include the new utility
+If you're still having issues, try the suggestions in the troubleshooting guide.
