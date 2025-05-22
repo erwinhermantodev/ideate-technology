@@ -1,0 +1,62 @@
+{{define "footer.html"}}
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <img src="https://res.cloudinary.com/karyalaza-indonesia/image/upload/v1747867548/Bard_Generated_Image_3_kadkcq.jpg" 
+                         alt="{{.Company.Name}} Logo" 
+                         style="width: 40px; height: 40px; border-radius: 8px; object-fit: cover; margin-right: 0.75rem;">
+                    <h3>{{.Company.Name}}</h3>
+                </div>
+                <p>{{.Company.Description}}</p>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> {{.Company.Email}}</p>
+                    <p><i class="fas fa-phone"></i> {{.Company.Phone}}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{.Owner.Location}}</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Software Development</a></li>
+                        <li><a href="#services">API Development</a></li>
+                        <li><a href="#services">Microservices</a></li>
+                        <li><a href="#services">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <!-- <li><a href="#about">About {{.Owner.Name}}</a></li> -->
+                        <li><a href="#stats">Our Stats</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <!-- <li><a href="{{.Owner.GitHub}}" target="_blank">Portfolio</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="{{.Company.LinkedIn}}" target="_blank">LinkedIn Profile</a></li>
+                        <!-- <li><a href="{{.Owner.GitHub}}" target="_blank">GitHub Portfolio</a></li> -->
+                        <li><a href="mailto:{{.Company.Email}}">Email Contact</a></li>
+                        <li><a href="#contact">Get in Touch</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {{.CurrentYear}} {{.Company.Name}}. All rights reserved. Founded {{.Company.Founded}}.</p>
+            <div class="footer-social">
+                <a href="{{.Company.LinkedIn}}" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- <a href="{{.Owner.GitHub}}" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a> -->
+                <a href="mailto:{{.Company.Email}}" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+{{end}}

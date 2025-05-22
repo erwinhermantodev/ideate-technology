@@ -1,0 +1,28 @@
+{{define "header.html"}}
+<!-- Navigation -->
+<nav id="navbar" class="navbar">
+    <div class="container">
+        <div class="navbar-content">
+            <a href="#" class="navbar-brand">
+                <div class="logo">
+                    <img src="https://res.cloudinary.com/karyalaza-indonesia/image/upload/v1747867548/Bard_Generated_Image_3_kadkcq.jpg" 
+                         alt="{{.Company.Name}} Logo" 
+                         style="width: 32px; height: 32px; border-radius: 6px; object-fit: cover;">
+                </div>
+                {{.Company.Name}}
+            </a>
+            <div class="navbar-menu-toggle" id="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li><a href="#home" class="active" data-section="home">Home</a></li>
+                <li><a href="#services" data-section="services">Services</a></li>
+                <li><a href="#about" data-section="about">About</a></li>
+                <li><a href="#stats" data-section="stats">Stats</a></li>
+                <li><a href="#testimonials" data-section="testimonials">Testimonials</a></li>
+                <li><a href="#contact" data-section="contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{{end}}
