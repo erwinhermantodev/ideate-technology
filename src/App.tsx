@@ -195,7 +195,7 @@ export default function App() {
       />
 
       {/* Interactive CMS Integration playhouse & webhook drawer */}
-      <CmsDeveloperPanel 
+      {/* <CmsDeveloperPanel 
         content={content}
         config={config}
         onUpdateContent={handleUpdateContent}
@@ -203,7 +203,7 @@ export default function App() {
         onReset={handleReset}
         inquiries={inquiries}
         onClearInquiries={handleClearInquiries}
-      />
+      /> */}
 
     </div>
   );
