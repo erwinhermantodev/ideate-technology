@@ -370,7 +370,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                             </div>
                             <div className="bg-neutral-955 rounded px-3 py-0.5 text-[8px] font-mono text-neutral-500 w-44 text-center truncate mx-auto select-none border border-neutral-850">
-                              terminal.tokovio.biz.id/dashboard
+                              terminal.tokovio.com/dashboard
                             </div>
                           </div>
                           {/* Dashboard Metrics Image */}
@@ -396,7 +396,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                             </div>
                             <div className="bg-neutral-955 rounded px-3 py-0.5 text-[8px] font-mono text-neutral-500 w-44 text-center truncate mx-auto select-none border border-neutral-850">
-                              terminal.tokovio.biz.id/settings/profile
+                              terminal.tokovio.com/settings/profile
                             </div>
                           </div>
                           {/* Settings Panel Image */}
@@ -422,7 +422,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                             </div>
                             <div className="bg-neutral-955 rounded px-3 py-0.5 text-[8px] font-mono text-neutral-500 w-44 text-center truncate mx-auto select-none border border-neutral-850">
-                              terminal.tokovio.biz.id/login
+                              terminal.tokovio.com/login
                             </div>
                           </div>
                           {/* Welcome Terminal Image */}
@@ -448,7 +448,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                             </div>
                             <div className="bg-neutral-955 rounded px-3 py-0.5 text-[8px] font-mono text-neutral-500 w-44 text-center truncate mx-auto select-none border border-neutral-850">
-                              www.tokovio.biz.id/discover
+                              www.tokovio.com/discover
                             </div>
                           </div>
                           {/* Discover Grid Image */}
@@ -469,7 +469,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
                             </div>
                             <div className="bg-neutral-955 rounded px-3 py-0.5 text-[8px] font-mono text-neutral-500 w-44 text-center truncate mx-auto select-none border border-neutral-850">
-                              www.tokovio.biz.id
+                              www.tokovio.com
                             </div>
                           </div>
                           {/* Landing Page Image */}
@@ -501,7 +501,7 @@ export default function ProductsSection({ products }: ProductsSectionProps) {
                 <a 
                   href={currentProduct.id === 'prod-syumra' 
                     ? "https://play.google.com/store/apps/details?id=com.ideate.syumra" 
-                    : "https://www.tokovio.biz.id"
+                    : "https://www.tokovio.com"
                   }
                   target="_blank"
                   rel="noopener noreferrer"
